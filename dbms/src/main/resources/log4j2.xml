@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+	<Appenders>
+	
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%msg%n" />
+		</Console>
+
+		<RollingFile name="RollingFile"
+			filename="data.log"
+			filepattern="logPath/%d{ddMMyyyyHH}-data.log">
+			
+			<PatternLayout
+				pattern="%msg%n" />
+			
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			
+			<DefaultRolloverStrategy max="20" />
+		
+		</RollingFile>
+
+	</Appenders>
+	
+	<Loggers>
+		
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="RollingFile" />
+		
+		</Root>
+	
+	</Loggers>
+</Configuration>
